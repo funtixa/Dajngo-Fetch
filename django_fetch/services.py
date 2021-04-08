@@ -3,10 +3,12 @@ import requests
 
 def get_droplets():
     url = "https://my-burger-api.herokuapp.com/burgers"
-    # url = "https://api.digitalocean.com/v2/droplets"
-    r = requests.get(url, headers={'Authorization':'Bearer %s' % os.getenv('DO_ACCESS_TOKEN')})
+    r = requests.get(url)
     droplets = r.json()
     droplet_list = []
-    for i in range(len(droplets['droplets'])):
-        droplet_list.append(droplets['droplets'][i])
+    array_length = len(droplets)
+    for i in range(array_length):
+        droplet_list.append(droplets[i])
     return droplet_list
+
+

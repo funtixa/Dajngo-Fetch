@@ -1,6 +1,11 @@
+from django.shortcuts import render
 from django.views.generic import TemplateView
+from .services import get_droplets
 
 class GetDroplets(TemplateView):
-    template_name = 'fetches.html'
+    template_name = 'droplets.html'
     def get_context_data(self, *args, **kwargs):
-        pass
+        context = {
+            'droplets' : get_droplets(),
+        }
+        return context
